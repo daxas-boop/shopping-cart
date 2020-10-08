@@ -10,7 +10,8 @@ const Header = styled.header`
   height:64px;
   display:flex;
   align-items:center;
-  opacity:0.8;
+  position: fixed;
+  z-index: 1;
 `
 
 const Nav = styled.nav `
@@ -50,7 +51,9 @@ const NavBar = () => {
           Shop
         </NavLink>
       </Nav>
-      <CartIcon icon={faShoppingCart} size='lg' ></CartIcon>
+      <Link to='/cart'>
+        <CartIcon icon={faShoppingCart} size='lg' ></CartIcon>
+      </Link>
     </Header>
   );  
 }
