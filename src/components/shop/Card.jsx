@@ -57,7 +57,7 @@ const Card = (props) => {
     const {name, image, price} = props;
 
     return(
-        <Container key={name}>
+        <Container>
             <Image src={image} alt={name}></Image>
             <Info>
                 <ItemName>{name}</ItemName>
