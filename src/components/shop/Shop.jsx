@@ -62,6 +62,7 @@ const Shop = (props) => {
                 {showItems !== 'all' ?
                     shopItems[showItems].map(item => (
                         <Card
+                            key={item.name}
                             name={item.name}
                             price={item.price}
                             image={item.image}
@@ -69,6 +70,7 @@ const Shop = (props) => {
                 )) :
                     allItems.map(item => (
                         <Card
+                            key={item.name}
                             name={item.name}
                             price={item.price}
                             image={item.image}
