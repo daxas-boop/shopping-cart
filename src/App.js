@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import NavBar from './components/Nav'
-import Shop from './components/Shop'
-import Home from './components/Home'
+import Shop from './components/shop/Shop'
+import Home from './components/home/Home'
 import Cart from './components/ShoppingCart'
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/shop" component={Shop} />
-          <Route path="/shop-cart" component={Cart} />
+          <Route path="/shop/cart" component={Cart} />
         </Switch>
       </Router>
     </div>
