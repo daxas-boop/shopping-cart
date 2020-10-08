@@ -51,7 +51,7 @@ const NavBar = () => {
           Shop
         </NavLink>
       </Nav>
-      <Link to='shop/cart'>
+      <Link to='/cart'>
         <CartIcon icon={faShoppingCart} size='lg' ></CartIcon>
       </Link>
     </Header>
