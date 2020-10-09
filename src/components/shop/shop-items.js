@@ -7,12 +7,12 @@ const shopItems = {
     shoes:[
         {
             name:'Nike Air Jordan 1 ',
-            price:'$320',
+            price:320,
             image: Jordan1
         },
         {
             name:'Nike Kobe 5 Protro Chaos',
-            price:'$410',
+            price:410,
             image:KobeProto5
         }
     ],
@@ -20,7 +20,7 @@ const shopItems = {
     men:[
         {
             name:'Under Armour Men\'s Tech 2.0',
-            price:'$16.24',
+            price:16.24,
             image:UnderArmorMen
         }
     ],
@@ -28,7 +28,7 @@ const shopItems = {
     women:[
         {
             name:'Topstype Women\'s Fall Color Block',
-            price:'$18.98',
+            price:18.98,
             image:TopstypeWomen
         }
     ]
