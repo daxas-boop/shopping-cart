@@ -123,7 +123,7 @@ const Cart = () => {
                 <div>TOTAL PRICE:$ 
                 { 
                     (cartItems.length === 1) ? cartItems[0].item.price * cartItems[0].amount :
-                    cartItems.length > 1 ? cartItems.reduce( calculateTotalPrice , 0) :'0'
+                    cartItems.length > 1 ? Number(cartItems.reduce( calculateTotalPrice , 0)).toFixed(2) :'0'
                 }
                 </div>
                 <Button>CHECKOUT</Button>
