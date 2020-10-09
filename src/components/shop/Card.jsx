@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import styled from '@emotion/styled';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
 const Container = styled.div `
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -56,6 +57,14 @@ const SelectQty = styled.div `
 const Card = (props) => {
     const [quantity, setQuantity] = useState('1')
     const {onClick, name, image, price} = props;
+    const [loadingIcon, setLoadingIcon] = useState(false);
+
+    const handleIconChange = () => {
+        setLoadingIcon(true);
+        setTimeout(() => {
+            setLoadingIcon(false);
+        }, 300);
+    }
 
     return(
         <Container>
@@ -63,7 +72,15 @@ const Card = (props) => {
             <ItemName>{name}</ItemName>
             <Info>
                 <ItemPrice>${price}</ItemPrice>
-                <CartIcon onClick={() => onClick(quantity)} icon={faCartPlus} size='lg'></CartIcon>
+                {loadingIcon ? 
+                    <FontAwesomeIcon icon={faCircleNotch} spin></FontAwesomeIcon> 
+                :
+                    <CartIcon 
+                    onClick={() => {onClick(quantity); handleIconChange() }} 
+                    icon={faCartPlus} 
+                    size='lg'
+                    />
+                }
                 <SelectQty>
                     <label>Qty</label>
                     <select 
