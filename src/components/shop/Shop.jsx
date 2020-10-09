@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from '@emotion/styled';
 import shopItems from './shop-items';
 import Card from './Card';
+import { ItemsContext } from '../ItemsContext';
 
 const Container = styled.section `
     padding-top: 64px;
@@ -34,9 +35,20 @@ const Subtitle = styled.p `
     }
 `
 
+
 const Shop = (props) => {
     const [showItems, setShowItems] = useState(props.location.items || 'all')
+    const [cartItems, setCartItems] = useContext(ItemsContext);
     const allItems = shopItems.men.concat(shopItems.women, shopItems.shoes)
+
+    const handleAddItemCart = (item, quantity) => {
+        const cartItem = {
+            item: item,
+            amount: quantity
+        }
+        
+        setCartItems([...cartItems, cartItem]);
+    }
 
     return (
         <Container>
@@ -66,6 +78,7 @@ const Shop = (props) => {
                             name={item.name}
                             price={item.price}
                             image={item.image}
+                            onClick={ (quantity) => handleAddItemCart(item,quantity)}
                         />
                 )) :
                     allItems.map(item => (
@@ -74,6 +87,7 @@ const Shop = (props) => {
                             name={item.name}
                             price={item.price}
                             image={item.image}
+                            onClick={ (quantity) => handleAddItemCart(item, quantity)}
                         />
                 ))}
            </ItemsContainer>

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { ItemsContext } from './ItemsContext';
 
 const Header = styled.header`
   width:100%;
@@ -31,7 +32,11 @@ const NavLink = styled(Link) `
   }
 `
 
-const CartIcon = styled(FontAwesomeIcon) `
+const CartIcon = styled(Link) `
+  font-family:'Roboto';
+  display:flex;
+  align-items:center;
+  text-decoration:none;
   color:white;
   margin-right:20px;
   &:hover{
@@ -41,6 +46,8 @@ const CartIcon = styled(FontAwesomeIcon) `
 `
 
 const NavBar = () => {
+  const [cartItems] = useContext(ItemsContext);
+  
   return (
     <Header>
       <Nav>
@@ -51,9 +58,10 @@ const NavBar = () => {
           Shop
         </NavLink>
       </Nav>
-      <Link to='/cart'>
-        <CartIcon icon={faShoppingCart} size='lg' ></CartIcon>
-      </Link>
+      <CartIcon to='/cart'>
+        <FontAwesomeIcon icon={faShoppingCart} size='lg' ></FontAwesomeIcon>
+        <p>[{cartItems.length}]</p>
+      </CartIcon>
     </Header>
   );  
 }

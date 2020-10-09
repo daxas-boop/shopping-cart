@@ -4,11 +4,11 @@ import NavBar from './components/Nav'
 import Shop from './components/shop/Shop'
 import Home from './components/home/Home'
 import Cart from './components/ShoppingCart'
+import { Provider } from './components/ItemsContext'
 
 function App() {
-
   return (
-    <div>
+    <Provider>
       <Router>
         <NavBar/>
         <Switch>
@@ -17,7 +17,7 @@ function App() {
           <Route path="/cart" component={Cart} />
         </Switch>
       </Router>
-    </div>
+    </Provider>
   );
 }
 
