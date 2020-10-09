@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
@@ -19,12 +19,10 @@ const Container = styled.div `
 `
 
 const Info = styled.div `
-    height:80px;
     display:flex;
-    flex-direction:column;
     justify-content:space-between;
-    text-align:center;
     position:relative;
+    align-item:flex-end;
 `
 
 const Image = styled.img `
@@ -44,25 +42,41 @@ const ItemPrice = styled.h4 `
 
 const CartIcon = styled(FontAwesomeIcon) `
     color:green;
-    position:absolute;
-    bottom:0;
-    right:0;
     &:hover{
         cursor:pointer;
         transform:scale(1.2)
     }
 `
 
+const SelectQty = styled.div `
+    display:flex;
+    flex-direction:column;
+`
+
 const Card = (props) => {
-    const {name, image, price} = props;
+    const [quantity, setQuantity] = useState('1')
+    const {onClick, name, image, price} = props;
 
     return(
         <Container>
             <Image src={image} alt={name}></Image>
+            <ItemName>{name}</ItemName>
             <Info>
-                <ItemName>{name}</ItemName>
-                <ItemPrice>{price}</ItemPrice>
-                <CartIcon icon={faCartPlus} size='lg'></CartIcon>
+                <ItemPrice>${price}</ItemPrice>
+                <CartIcon onClick={() => onClick(quantity)} icon={faCartPlus} size='lg'></CartIcon>
+                <SelectQty>
+                    <label>Qty</label>
+                    <select 
+                    onChange={(e) => setQuantity(e.target.value)}
+                    name="quantity">
+                        <option value="1">1 </option>
+                        <option value="2">2 </option>
+                        <option value="3">3 </option>
+                        <option value="4">4 </option>
+                        <option value="5">5 </option>
+                        <option value="6">6 </option>
+                    </select> 
+                </SelectQty>
             </Info>
         </Container>
     )
