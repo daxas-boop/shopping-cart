@@ -9,11 +9,15 @@ const Container = styled.section `
     display:grid;
     grid-template-columns:1fr 3fr;
     font-family:'Roboto';
+    @media (max-width: 768px) {
+        grid-template-columns:1fr;
+    }
 `
 
 const ItemsContainer = styled.section `
     display:flex;
     flex-wrap:wrap;
+    justify-content:center;
 `
 
 const Categories = styled.section `

@@ -10,6 +10,10 @@ const Container = styled.section `
     display: grid;
     grid-template-columns: 3fr 1fr;
     min-height:80vh;
+    @media (max-width: 768px) {
+        grid-template-columns:1fr;
+        grid-template-rows:3fr 1fr;
+    }
 `
 
 const ShoppingCart = styled.section `
@@ -25,6 +29,9 @@ const OrderSummary = styled.section `
     display:flex; 
     flex-direction:column;
     justify-content:space-around;
+    @media (max-width: 768px) {
+        grid-column:1/2;
+    }
 `
 
 const ItemContainer = styled.div `
@@ -33,8 +40,13 @@ const ItemContainer = styled.div `
     justify-content:space-between;
     margin-top:35px;
     heigth:150px;
+    min-height:40px;
     grid-column:1/6;
     position:relative;
+    padding:5px 0;
+    border-bottom:1px solid grey;
+    border-top:1px solid grey;
+    align-items:center;
 `
 
 const Title = styled.h2 `
@@ -45,6 +57,9 @@ const Title = styled.h2 `
 const Subtitle = styled.h4 `
     margin:0;
     text-align:center;
+    @media (max-width: 768px) {
+        font-size:14px;
+    }
 `
 
 const Header = styled.div `
@@ -53,6 +68,9 @@ const Header = styled.div `
     padding-bottom:20px;
     margin-right:45px;
     border-bottom:1px solid gray;
+    @media (max-width: 768px) {
+        margin-right:0
+    }
 `
 
 const ProductDetails = styled.section `
@@ -60,6 +78,9 @@ const ProductDetails = styled.section `
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
     margin-right:45px;
     margin-top:25px;
+    @media (max-width: 768px) {
+        margin-right:0
+    }
 `
 
 const Button = styled.button `
@@ -84,13 +105,16 @@ const Button = styled.button `
     }
 `
 
-const RemoveItem = styled.span `
+const RemoveItem = styled.h4 `
     margin:0;
     text-align:center;
     color:grey;
     &:hover{
         color:black;
         cursor:pointer;
+    }
+    @media (max-width: 768px) {
+        font-size:14px
     }
 `
 
