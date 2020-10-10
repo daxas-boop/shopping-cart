@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.js": "/shopping-cart/static/js/main.86636f01.chunk.js",
+    "main.js.map": "/shopping-cart/static/js/main.86636f01.chunk.js.map",
+    "runtime-main.js": "/shopping-cart/static/js/runtime-main.221af841.js",
+    "runtime-main.js.map": "/shopping-cart/static/js/runtime-main.221af841.js.map",
+    "static/js/2.09a7df14.chunk.js": "/shopping-cart/static/js/2.09a7df14.chunk.js",
+    "static/js/2.09a7df14.chunk.js.map": "/shopping-cart/static/js/2.09a7df14.chunk.js.map",
+    "index.html": "/shopping-cart/index.html",
+    "precache-manifest.d6d853b680d853fafddcd219a64fa6a3.js": "/shopping-cart/precache-manifest.d6d853b680d853fafddcd219a64fa6a3.js",
+    "service-worker.js": "/shopping-cart/service-worker.js",
+    "static/js/2.09a7df14.chunk.js.LICENSE.txt": "/shopping-cart/static/js/2.09a7df14.chunk.js.LICENSE.txt",
+    "static/media/Jordan-1.jpg": "/shopping-cart/static/media/Jordan-1.e714c7f7.jpg",
+    "static/media/Nike-Kobe-5-Protro.jpg": "/shopping-cart/static/media/Nike-Kobe-5-Protro.28af589c.jpg",
+    "static/media/TopstypeWomen.jpg": "/shopping-cart/static/media/TopstypeWomen.90aae327.jpg",
+    "static/media/UnderArmorMen.jpg": "/shopping-cart/static/media/UnderArmorMen.f8f193a6.jpg",
+    "static/media/Widget-1.png": "/shopping-cart/static/media/Widget-1.a99ea80c.png",
+    "static/media/Widget-2.png": "/shopping-cart/static/media/Widget-2.d26bfbd0.png",
+    "static/media/Widget-3.png": "/shopping-cart/static/media/Widget-3.33e8a308.png",
+    "static/media/bottom_sweatpants.jpg": "/shopping-cart/static/media/bottom_sweatpants.604326a6.jpg",
+    "static/media/cloudfoam.jpg": "/shopping-cart/static/media/cloudfoam.874c62dc.jpg",
+    "static/media/compression_shorts.jpg": "/shopping-cart/static/media/compression_shorts.11a187d1.jpg",
+    "static/media/dockers.jpg": "/shopping-cart/static/media/dockers.adf001d6.jpg",
+    "static/media/grand_court.jpg": "/shopping-cart/static/media/grand_court.5d0963d0.jpg",
+    "static/media/long_sleeve.jpg": "/shopping-cart/static/media/long_sleeve.111ac620.jpg",
+    "static/media/mainHome.jpg": "/shopping-cart/static/media/mainHome.f67e5e52.jpg",
+    "static/media/summer_women.jpg": "/shopping-cart/static/media/summer_women.ce6cfea2.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.221af841.js",
+    "static/js/2.09a7df14.chunk.js",
+    "static/js/main.86636f01.chunk.js"
+  ]
+}
