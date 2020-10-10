@@ -28,7 +28,7 @@ const Info = styled.div `
 
 const Image = styled.img `
     width:200px;
-    height:180px;
+    height:185px;
 `
 
 const ItemName = styled.h3 `
