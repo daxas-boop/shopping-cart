@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState, useRef} from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -32,22 +32,41 @@ const NavLink = styled(Link) `
   }
 `
 
-const CartIcon = styled(Link) `
+const NavLinkICon = styled(Link) `
   font-family:'Roboto';
   display:flex;
   align-items:center;
   text-decoration:none;
   color:white;
   margin-right:20px;
+`
+
+const CartIcon = styled(FontAwesomeIcon) `
+  padding:5px;
   &:hover{
-    color:#AD6B48;
+    color:#AD6B48 !important;
     cursor:pointer;
   }
 `
 
 const NavBar = () => {
   const [cartItems] = useContext(ItemsContext);
-  
+  const [iconColor, setIconColor] = useState('white')
+  const isFirstRun = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRun.current) { // in the first render will do nothing
+      isFirstRun.current = false;
+      return;
+    }
+
+    setIconColor('red')
+    setTimeout(() => {
+      setIconColor('white')
+    }, 300);
+
+  }, [cartItems])
+
   return (
     <Header>
       <Nav>
@@ -58,10 +77,14 @@ const NavBar = () => {
           Shop
         </NavLink>
       </Nav>
-      <CartIcon to='/cart'>
-        <FontAwesomeIcon icon={faShoppingCart} size='lg' ></FontAwesomeIcon>
+      <NavLinkICon to='/cart'>
+        <CartIcon 
+          icon={faShoppingCart} 
+          size='lg' 
+          style={{color:iconColor}}
+          ></CartIcon>
         <p>[{cartItems.length}]</p>
-      </CartIcon>
+      </NavLinkICon>
     </Header>
   );  
 }

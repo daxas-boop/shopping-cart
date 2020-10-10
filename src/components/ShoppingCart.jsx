@@ -10,6 +10,10 @@ const Container = styled.section `
     display: grid;
     grid-template-columns: 3fr 1fr;
     min-height:80vh;
+    @media (max-width: 768px) {
+        grid-template-columns:1fr;
+        grid-template-rows:3fr 1fr;
+    }
 `
 
 const ShoppingCart = styled.section `
@@ -25,15 +29,24 @@ const OrderSummary = styled.section `
     display:flex; 
     flex-direction:column;
     justify-content:space-around;
+    @media (max-width: 768px) {
+        grid-column:1/2;
+    }
 `
 
 const ItemContainer = styled.div `
     display:grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
     justify-content:space-between;
     margin-top:35px;
     heigth:150px;
-    grid-column:1/5;
+    min-height:40px;
+    grid-column:1/6;
+    position:relative;
+    padding:5px 0;
+    border-bottom:1px solid grey;
+    border-top:1px solid grey;
+    align-items:center;
 `
 
 const Title = styled.h2 `
@@ -43,6 +56,10 @@ const Title = styled.h2 `
 
 const Subtitle = styled.h4 `
     margin:0;
+    text-align:center;
+    @media (max-width: 768px) {
+        font-size:14px;
+    }
 `
 
 const Header = styled.div `
@@ -51,13 +68,19 @@ const Header = styled.div `
     padding-bottom:20px;
     margin-right:45px;
     border-bottom:1px solid gray;
+    @media (max-width: 768px) {
+        margin-right:0
+    }
 `
 
 const ProductDetails = styled.section `
     display:grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
     margin-right:45px;
     margin-top:25px;
+    @media (max-width: 768px) {
+        margin-right:0
+    }
 `
 
 const Button = styled.button `
@@ -82,11 +105,30 @@ const Button = styled.button `
     }
 `
 
+const RemoveItem = styled.h4 `
+    margin:0;
+    text-align:center;
+    color:grey;
+    &:hover{
+        color:black;
+        cursor:pointer;
+    }
+    @media (max-width: 768px) {
+        font-size:14px
+    }
+`
+
 const Cart = () => {
-    const [cartItems] = useContext(ItemsContext);
+    const [cartItems, setCartItems] = useContext(ItemsContext);
 
     const calculateTotalPrice = (accum, item) => {
        return accum + item.item.price * item.amount 
+    }
+
+    const removeItem = (removeItem) => {
+        setCartItems(
+            cartItems.filter( item =>  item !== removeItem )
+        )
     }
 
     return (
@@ -99,18 +141,21 @@ const Cart = () => {
                 <ProductDetails>
                         <Subtitle >Product Details</Subtitle>
                         <Subtitle >Quantity</Subtitle>
-                        <Subtitle style={{textAlign:'center'}}>Price</Subtitle>
-                        <Subtitle style={{textAlign:'end'}}>Total</Subtitle>
+                        <Subtitle >Price</Subtitle>
+                        <Subtitle >Total</Subtitle>
                     {cartItems.map(item => (
                         <ItemContainer key= { item.item.name } >
                             <Subtitle> { item.item.name } </Subtitle>
                             <Subtitle> {item.amount} </Subtitle>
-                            <Subtitle style={{textAlign:'center'}}> 
+                            <Subtitle > 
                                 ${ item.item.price } 
                             </Subtitle>
-                            <Subtitle style={{textAlign:'end'}}> 
+                            <Subtitle > 
                                 ${ Number(item.item.price * item.amount).toFixed(2) } 
                             </Subtitle>
+                            <RemoveItem
+                                onClick={() => removeItem(item)}
+                            > Remove </RemoveItem>
                         </ItemContainer>
                     ))}
                 </ProductDetails>
@@ -119,11 +164,11 @@ const Cart = () => {
                 <Header style={{margin:'0px 20px', textAlign:'center', display:'block'}}>
                     <Title>Order Summary</Title>
                 </Header>
-                <div>ITEMS {cartItems.length}</div>
-                <div>TOTAL PRICE:$ 
+                <div>{cartItems.length} ITEMS</div>
+                <div>TOTAL PRICE: $  
                 { 
                     (cartItems.length === 1) ? cartItems[0].item.price * cartItems[0].amount :
-                    cartItems.length > 1 ? Number(cartItems.reduce( calculateTotalPrice , 0)).toFixed(2) :'0'
+                    cartItems.length > 1 ? (cartItems.reduce( calculateTotalPrice , 0)).toFixed(2) :'0'
                 }
                 </div>
                 <Button>CHECKOUT</Button>

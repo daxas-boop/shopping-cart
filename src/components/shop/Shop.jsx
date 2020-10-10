@@ -9,11 +9,15 @@ const Container = styled.section `
     display:grid;
     grid-template-columns:1fr 3fr;
     font-family:'Roboto';
+    @media (max-width: 768px) {
+        grid-template-columns:1fr;
+    }
 `
 
 const ItemsContainer = styled.section `
     display:flex;
     flex-wrap:wrap;
+    justify-content:center;
 `
 
 const Categories = styled.section `
@@ -37,16 +41,30 @@ const Subtitle = styled.p `
 
 
 const Shop = (props) => {
-    const [showItems, setShowItems] = useState(props.location.items || 'all')
+    const [showItems, setShowItems] = useState(props.location.items || 'all');
     const [cartItems, setCartItems] = useContext(ItemsContext);
-    const allItems = shopItems.men.concat(shopItems.women, shopItems.shoes)
+    const allItems = shopItems.men.concat(shopItems.women, shopItems.shoes);
 
     const handleAddItemCart = (item, quantity) => {
+
+        if ( cartItems.some( element => (element.item.name === item.name)) ) { 
+            cartItems.forEach(element => {  
+                if( element.item.name === item.name){
+                    const newCartItems = [...cartItems];
+                    const index = newCartItems.indexOf(element);
+                    newCartItems[index].amount = Number(element.amount) + Number(quantity);
+                    setCartItems(newCartItems);
+                }
+            });
+            return; 
+        } 
+        // Doesn't allow 2 equal items on the Cart, instead sums the amount of bought items.
+        // This helps to not get the Cart spammed with the same item.
+
         const cartItem = {
             item: item,
             amount: quantity
         }
-        
         setCartItems([...cartItems, cartItem]);
     }
 
