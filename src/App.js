@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import NavBar from './components/Nav'
 import Shop from './components/shop/Shop'
 import Home from './components/home/Home'
