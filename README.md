@@ -16,6 +16,9 @@ The page will reload if you make edits.
 - [react-dom](https://es.reactjs.org/docs/react-dom.html)
 - [react-router-dom](https://reactrouter.com/web/guides/quick-start)
 - [react-scripts](https://github.com/facebook/create-react-app/tree/master/packages/react-scripts)
+- [@material-ui/core](https://www.npmjs.com/package/@material-ui/core)
+- [@material-ui/styled](https://material-ui.com/es/styles/basics/)
+- [@fortawesome/fontawesome-svg-core](https://fontawesome.com/how-to-use/on-the-web/using-with/react)
 
 ## Available Scripts
 
